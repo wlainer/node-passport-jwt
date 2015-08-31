@@ -1,0 +1,25 @@
+{
+   "nome": "John Snow",
+   "telefone": "31 8888 9999",
+   "email": "john@gmail.com",
+   "observacao": "",
+   "endereco": [{
+      "logradouro": "rua senador firmino",
+      "complemento": "ap 203",
+      "bairro": "ouro preto",
+      "cidade": "belo horizonte",
+      "estado": "minas gerais"
+   }],
+   "contato": [{
+      "nome": "maria",
+      "email": "maria@gmail.com",
+      "telefone": "11 2222 3333",
+      "setor": "administrativo"
+   }],
+   "configuracao": [{
+      "descricao": "server",
+      "servidor": "127.0.0.1",
+      "porta": "8080",
+      "endereco_web": "localhost"
+   }]
+}

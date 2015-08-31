@@ -30,11 +30,8 @@ module.exports = {
      * clienteController.create()
      */
     create: function(req, res, callback) {
-        var cliente = new model({
-			nome : req.body.nome,
-			descricao : req.body.descricao,
-			created_at : req.body.created_at
-        });
+        var dados = req.body;
+        var cliente = new model(dados);
 
         cliente.save(function(err, cliente){
             if(err) {

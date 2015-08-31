@@ -29,10 +29,16 @@ module.exports = function(passport) {
      }
    ));
 
-  var JWT_STRATEGY_CONFIG = {
+//   var JWT_STRATEGY_CONFIG = {
+//     secretOrKey: 'secret',
+//     issuer : 'testIssuer',
+//     nome: 'teste',
+//     passReqToCallback: false
+// };  
+var JWT_STRATEGY_CONFIG = {
     secretOrKey: 'secret',
-    issuer : 'testIssuer',
-    nome: 'teste',
+   'issuer': 'myApi',
+   'audience': 'Myapi',
     passReqToCallback: false
 };
 

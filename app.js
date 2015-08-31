@@ -11,9 +11,10 @@ var strategy = require('./config/passport')(passport);
 var flash = require('connect-flash');
 
 var api = {};
+api.expose = require('./routes/expose');
 api.index = require('./routes/index');
 api.users = require('./routes/users');
-api.clientes = require('./routes/clientes');
+api.clientes = require('./routes/api/clientes');
 
 var app = express();
 
@@ -37,8 +38,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', api.index);
+app.use('/expose', api.expose);
 app.use('/users', passport.authenticate('jwt', { session: false}), api.users);
-app.use('/clientes', api.clientes);
+app.use('/api/clientes', passport.authenticate('jwt', { session: false}), api.clientes);
+
+// redirect all others to the index (HTML5 history)
+app.get('*', function(req, res, next) {
+  res.render('index');
+});
 
 var router = express.Router();
 router.route('/login')
