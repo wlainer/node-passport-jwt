@@ -8,8 +8,6 @@
   function ClientesService($http) {
     var urlBase = '//localhost:3000/api/clientes';
 
-    this.items = [];
-
     this.find = function() {
       return $http.get(urlBase);
     };

@@ -10,12 +10,12 @@
    .config(['$routeProvider', function($routeProvider) {
       $routeProvider
       .when('/clientes', {
-         templateUrl: 'expose/clientes/list',
-         controller: 'clienteListController'
+         templateUrl: 'js/modules/clientes/views/list.html',
+         controller: 'clienteListController as ctr'
       })
       .when('/clientes/:id', {
-         templateUrl: 'expose/clientes/show',
-         controller: 'clienteShowController'
+         templateUrl: 'js/modules/clientes/views/show.html',
+         controller: 'clienteShowController as ctr'
       });
    }]);
 

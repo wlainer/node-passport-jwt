@@ -7,14 +7,14 @@
     .controller('clienteListController', clienteListController)
     .controller('clienteShowController', clienteShowController);
 
-  function clienteListController($scope, ClientesService) {
-    $scope.title = 'Listagem';
+  function clienteListController(ClientesService) {
+    var vm = this;
+
+    vm.title = 'Listagem';
 
     ClientesService.find()
       .success(function(data) {
-        ClientesService.items = data.data;
-        console.log(ClientesService.items);
-        $scope.list = ClientesService.items;
+        vm.list = data.data;
         console.log('Sucesso', data);
       })
       .error(function(err) {
@@ -22,12 +22,14 @@
       });
   }
 
-  function clienteShowController($scope, ClientesService, $routeParams) {
-    $scope.title = 'Consulta de Groups';
+  function clienteShowController(ClientesService, $routeParams) {
+    var vm = this;
+
+    vm.title = 'Exibindo Cliente';
 
     ClientesService.get($routeParams.id)
       .success(function(data) {
-        $scope.item = data.data;
+        vm.item = data.data;
         console.log('Sucesso', data);
       })
       .error(function(err) {
@@ -52,7 +54,7 @@
   }
 
   FormCtrl.$inject = ['$scope', 'ClientesService'];
-  clienteShowController.$inject = ['$scope', 'ClientesService', '$routeParams'];
-  clienteListController.$inject = ['$scope', 'ClientesService'];
+  clienteShowController.$inject = ['ClientesService', '$routeParams'];
+  clienteListController.$inject = ['ClientesService'];
 
 })();

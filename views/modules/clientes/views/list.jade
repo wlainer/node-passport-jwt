@@ -1,6 +1,6 @@
 span(data-ng-init="module = 'clientes'")
-  h2 {{ title }}
+  h2 {{ ctr.title }}
   ul
-    li(data-ng-repeat='item in list')
+    li(data-ng-repeat='item in ctr.list')
       a(data-ng-href='/{{ module }}/{{ item._id }}')
         | {{ item.nome }}
