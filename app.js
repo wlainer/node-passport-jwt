@@ -40,7 +40,7 @@ app.use(passport.session());
 app.use('/', api.index);
 app.use('/expose', api.expose);
 app.use('/users', passport.authenticate('jwt', { session: false}), api.users);
-app.use('/api/clientes', passport.authenticate('jwt', { session: false}), api.clientes);
+app.use('/api/clientes', api.clientes);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', function(req, res, next) {
