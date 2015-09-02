@@ -1,4 +1,6 @@
-node_modules/
-public/js/lib
-public/js/dist
-.bowerrc
+back/node_modules/
+
+front/**/*.html
+front/js/lib
+front/js/dist
+front/.bowerrc

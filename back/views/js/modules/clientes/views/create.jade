@@ -1,0 +1,31 @@
+.panel.panel-primary(data-ng-init="module = 'clientes'")
+   .panel-heading.clearfix
+      strong {{ ctr.title }}
+      //- button.btn.btn-default.btn-sm.pull-right(type="button", ng-disabled="clienteForm.$invalid") Salvar
+   .panel-body
+      ul.nav.nav-tabs(role='tablist')
+         li.active(role='presentation')
+            a(href='#pessoais', aria-controls='pessoais', role='tab', data-toggle='tab') Dados pessoais
+
+         li(role='presentation')
+            a(href='#endereco', aria-controls='endereco', role='tab', data-toggle='tab') Endereços
+
+         li(role='presentation')
+            a(href='#contatos', aria-controls='contatos', role='tab', data-toggle='tab') Contatos
+
+         li(role='presentation')
+            a(href='#configuracoes', aria-controls='configuracoes', role='tab', data-toggle='tab') Configurações
+
+      .tab-content
+         .tab-pane.active#pessoais(role="tabpanel")
+            .content
+               h4
+                  span.glyphicon.glyphicon-plus-sign(aria-hidden="true")
+                  |  Dados Pessoais
+               include form-pessoal
+         .tab-pane#endereco(role="tabpanel")
+            .content
+               h4
+                  span.glyphicon.glyphicon-plus-sign(aria-hidden="true")
+                  |  Endereços
+               include form-endereco

@@ -1,0 +1,12 @@
+.panel-heading {line-height:32px;}
+
+.content {
+   padding: 15px 25px;
+}
+
+footer {
+  margin-top:20px;
+  padding-top:20px;
+  padding-bottom:20px;
+  background-color:#f8f8f8;
+}

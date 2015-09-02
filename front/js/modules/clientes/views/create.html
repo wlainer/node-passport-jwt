@@ -1,0 +1,92 @@
+
+<div data-ng-init="module = 'clientes'" class="panel panel-primary">
+  <div class="panel-heading clearfix"><strong>{{ ctr.title }}</strong>
+  </div>
+  <div class="panel-body">
+    <ul role="tablist" class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#pessoais" aria-controls="pessoais" role="tab" data-toggle="tab">Dados pessoais</a></li>
+      <li role="presentation"><a href="#endereco" aria-controls="endereco" role="tab" data-toggle="tab">Endereços</a></li>
+      <li role="presentation"><a href="#contatos" aria-controls="contatos" role="tab" data-toggle="tab">Contatos</a></li>
+      <li role="presentation"><a href="#configuracoes" aria-controls="configuracoes" role="tab" data-toggle="tab">Configurações</a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="pessoais" role="tabpanel" class="tab-pane active">
+        <div class="content">
+          <h4><span aria-hidden="true" class="glyphicon glyphicon-plus-sign"></span> Dados Pessoais</h4>
+          <form name="clienteForm" role="form">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input ng-model="ctr.cliente.nome" type="text" id="nome" placeholder="Insira seu nome..." required="required" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label for="telefone">Telefone</label>
+              <input ng-model="ctr.cliente.telefone" type="text" id="telefone" placeholder="Insira seu telefone..." class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input ng-model="ctr.cliente.email" type="text" id="email" placeholder="Insira seu email..." class="form-control"/>
+              <p class="help-block">Example block-level help text here.</p>
+            </div>
+            <div class="form-group">
+              <label for="observacao">Observação</label>
+              <input ng-model="ctr.cliente.observacao" type="text" id="observacao" placeholder="Insira uma observacao..." class="form-control"/>
+            </div>
+            <button type="submit" ng-disabled="clienteForm.$invalid" ng-click="ctr.adicionaCliente(ctr.cliente)" class="btn btn-default">Enviar</button>
+          </form>
+        </div>
+      </div>
+      <div id="endereco" role="tabpanel" class="tab-pane">
+        <div class="content">
+          <h4><span aria-hidden="true" class="glyphicon glyphicon-plus-sign"></span> Endereços</h4>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <table class="table table-condensed table-hover">
+                  <thead>
+                    <tr>
+                      <th style="width:30%">Logradouro</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-ng-repeat="item in ctr.enderecos">
+                      <td>{{ item.logradouro }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-7">
+                <form name="enderecoForm" role="form">
+                  <div class="form-group">
+                    <label for="cep">CEP</label>
+                    <input ng-model="ctr.endereco.cep" type="text" id="cep" placeholder="Insira seu cep..." required="required" class="form-control"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="logradouro">Logradouro</label>
+                    <input ng-model="ctr.endereco.logradouro" type="text" id="logradouro" placeholder="Insira seu logradouro..." required="required" class="form-control"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="complemento">Complemento</label>
+                    <input ng-model="ctr.endereco.complemento" type="text" id="complemento" placeholder="Insira seu complemento..." class="form-control"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="bairro">Bairro</label>
+                    <input ng-model="ctr.endereco.bairro" type="text" id="bairro" placeholder="Insira seu bairro..." class="form-control"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input ng-model="ctr.endereco.cidade" type="text" id="cidade" placeholder="Insira seu cidade..." class="form-control"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <input ng-model="ctr.endereco.estado" type="text" id="estado" placeholder="Insira seu estado..." class="form-control"/>
+                  </div>
+                  <button type="submit" ng-disabled="enderecoForm.$invalid" ng-click="ctr.adicionaEndereco(ctr.endereco)" class="btn btn-default">Enviar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

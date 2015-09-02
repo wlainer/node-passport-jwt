@@ -1,0 +1,37 @@
+.container
+   .row
+      .col-md-4
+         table.table.table-condensed.table-hover
+            thead
+               tr
+                  th(style='width:30%') Logradouro
+            tbody
+               tr(data-ng-repeat='item in ctr.enderecos')
+                  td {{ item.logradouro }}
+      .col-md-7
+         form(name='enderecoForm', role="form")
+            .form-group
+               label(for='cep') CEP
+               input.form-control(ng-model='ctr.endereco.cep', type='text', id='cep', placeholder='Insira seu cep...', required)
+
+            .form-group
+               label(for='logradouro') Logradouro
+               input.form-control(ng-model='ctr.endereco.logradouro', type='text', id='logradouro', placeholder='Insira seu logradouro...', required)
+
+            .form-group
+               label(for='complemento') Complemento
+               input.form-control(ng-model='ctr.endereco.complemento', type='text', id='complemento', placeholder='Insira seu complemento...')
+
+            .form-group
+               label(for='bairro') Bairro
+               input.form-control(ng-model='ctr.endereco.bairro', type='text', id='bairro', placeholder='Insira seu bairro...')
+
+            .form-group
+               label(for='cidade') Cidade
+               input.form-control(ng-model='ctr.endereco.cidade', type='text', id='cidade', placeholder='Insira seu cidade...')
+
+            .form-group
+               label(for='estado') Estado
+               input.form-control(ng-model='ctr.endereco.estado', type='text', id='estado', placeholder='Insira seu estado...')
+
+            button(type="submit", class="btn btn-default", ng-disabled="enderecoForm.$invalid", ng-click='ctr.adicionaEndereco(ctr.endereco)') Enviar
