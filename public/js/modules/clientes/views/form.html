@@ -2,20 +2,20 @@
 <form role="form">
   <div class="form-group">
     <label for="nome">Nome</label>
-    <input type="text" id="nome" placeholder="Insira seu nome..." class="form-control"/>
+    <input ng-model="ctr.cliente.nome" type="text" id="nome" placeholder="Insira seu nome..." class="form-control"/>
   </div>
   <div class="form-group">
     <label for="telefone">Telefone</label>
-    <input type="text" id="telefone" placeholder="Insira seu telefone..." class="form-control"/>
+    <input ng-model="ctr.cliente.telefone" type="text" id="telefone" placeholder="Insira seu telefone..." class="form-control"/>
   </div>
   <div class="form-group">
     <label for="email">Email</label>
-    <input type="text" id="email" placeholder="Insira seu email..." class="form-control"/>
+    <input ng-model="ctr.cliente.email" type="text" id="email" placeholder="Insira seu email..." class="form-control"/>
     <p class="help-block">Example block-level help text here.</p>
   </div>
   <div class="form-group">
     <label for="observacao">Observação</label>
-    <input type="text" id="observacao" placeholder="Insira uma observacao..." class="form-control"/>
+    <input ng-model="ctr.cliente.observacao" type="text" id="observacao" placeholder="Insira uma observacao..." class="form-control"/>
   </div>
   <button type="submit" class="btn btn-default">Enviar</button>
 </form>

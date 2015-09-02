@@ -10,10 +10,13 @@
       // 'myApp.services',
       // 'myApp.directives'
    ]).
+   config(['$routeProvider', '$locationProvider', myAppConfig]);
 
-   config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+   function myAppConfig($routeProvider, $locationProvider) {
       $routeProvider.otherwise({redirectTo: '/clientes'});
       $locationProvider.html5Mode(true);
-   }]);
+   }
+
+   myAppConfig.$inject = ['$routeProvider', '$locationProvider'];
 
 }());

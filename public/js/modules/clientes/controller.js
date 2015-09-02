@@ -3,14 +3,22 @@
   'use strict';
   // Definição dos Controllers usando o Service para reqs HTTP
   angular.module('ClientesControllerModule', [])
-    .controller('FormCtrl', FormCtrl)
+    .controller('clienteCreateController', clienteCreateController)
     .controller('clienteListController', clienteListController)
     .controller('clienteShowController', clienteShowController);
+
+  function clienteCreateController(ClientesService) {
+    var vm = this;
+
+    vm.title = 'Cadastrando novo Cliente';
+    vm.cliente = {};
+
+  }
 
   function clienteListController(ClientesService) {
     var vm = this;
 
-    vm.title = 'Listagem';
+    vm.title = 'Listagem de Clientes';
 
     ClientesService.find()
       .success(function(data) {
@@ -37,24 +45,8 @@
       });
   }
 
-  function FormCtrl($scope, ClientesService) {
-    $scope.title = 'Form de Office';
-
-    $scope.save = function(form) {
-      ClientesService.create(form)
-        .success(function(data) {
-          $scope.Model = data;
-          ClientesService.items.push(data);
-          console.log('Sucesso', data);
-        })
-        .error(function(err) {
-          console.log('Erro', err);
-        });
-    }
-  }
-
-  FormCtrl.$inject = ['$scope', 'ClientesService'];
   clienteShowController.$inject = ['ClientesService', '$routeParams'];
   clienteListController.$inject = ['ClientesService'];
+  clienteCreateController.$inject = ['ClientesService'];
 
 })();

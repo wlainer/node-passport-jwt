@@ -1,7 +1,6 @@
-body {
-   background-color: #F2F4F4;
+.panel-heading {line-height:32px;}
+
+.content {
+   padding: 15px 25px;
 }
 
-.container {
-   background-color: #FFFFFF;
-}

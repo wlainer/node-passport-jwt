@@ -1,5 +1,26 @@
-<span data-ng-init="module = 'clientes'">
-  <h2>{{ ctr.title }}</h2>
-  <ul>
-    <li data-ng-repeat="item in ctr.list"><a data-ng-href="/{{ module }}/{{ item._id }}">{{ item.nome }}</a></li>
-  </ul></span>
+
+<div data-ng-init="module = 'clientes'" class="panel panel-primary">
+  <div class="panel-heading clearfix"><strong>{{ ctr.title }}</strong><a href="/clientes/add" class="btn btn-default btn-sm pull-right">Novo</a></div>
+  <div class="panel-body">
+    <table class="table table-condensed table-hover">
+      <thead>
+        <tr>
+          <th style="width:30%">Nome</th>
+          <th style="width:20%">Telefone</th>
+          <th style="width:30%">Email</th>
+          <th style="width:10%" class="text-center">Alterar</th>
+          <th style="width:10%" class="text-center">Excluir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-ng-repeat="item in ctr.list">
+          <td>{{ item.nome }}</td>
+          <td>{{ item.telefone }}</td>
+          <td>{{ item.email }}</td>
+          <td class="text-center"><a data-ng-href="/{{ module }}/{{ item._id }}"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></a></td>
+          <td class="text-center"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
