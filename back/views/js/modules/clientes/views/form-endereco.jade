@@ -1,37 +1,51 @@
-.container
-   .row
-      .col-md-4
-         table.table.table-condensed.table-hover
-            thead
-               tr
-                  th(style='width:30%') Logradouro
-            tbody
-               tr(data-ng-repeat='item in ctr.enderecos')
-                  td {{ item.logradouro }}
-      .col-md-7
-         form(name='enderecoForm', role="form")
-            .form-group
-               label(for='cep') CEP
-               input.form-control(ng-model='ctr.endereco.cep', type='text', id='cep', placeholder='Insira seu cep...', required)
+.row
+   .col-md-4
+      ul.list-group(data-ng-repeat='item in ctr.enderecos')
+         li.list-group-item {{ item.logradouro }}
 
-            .form-group
-               label(for='logradouro') Logradouro
-               input.form-control(ng-model='ctr.endereco.logradouro', type='text', id='logradouro', placeholder='Insira seu logradouro...', required)
+   .col-md-8
+      form.form.form-vertical(name='enderecoForm', role="form", ng-submit='ctr.adicionaEndereco(enderecoForm.$valid)', novalidate)
+         .row
+            .col-md-5
+               .form-group
+                  label(for='cep') CEP
+                  .input-group(ng-class="{ 'has-error' : enderecoForm.cep.$invalid && !enderecoForm.cep.$pristine }")
+                     input#cep.form-control(ng-model='ctr.endereco.cep', type='text', name='cep', placeholder='Insira seu cep...', ng-pattern='/^[0-9]{8}$/')
+                     span.input-group-btn
+                        button.btn.btn-primary(type='button', ng-click='ctr.pesquisarCep(ctr.endereco.cep)', ng-disabled='enderecoForm.cep.$invalid && !enderecoForm.cep.$pristine')
+                           span.glyphicon.glyphicon-search
+                  p.help-block(ng-show="enderecoForm.cep.$invalid && !enderecoForm.cep.$pristine" ) Cep inválido
 
-            .form-group
-               label(for='complemento') Complemento
-               input.form-control(ng-model='ctr.endereco.complemento', type='text', id='complemento', placeholder='Insira seu complemento...')
+         .row
+            .col-md-12
+               .form-group(ng-class="{ 'has-error' : enderecoForm.logradouro.$invalid && !enderecoForm.logradouro.$pristine }")
+                  label(for='logradouro') Logradouro
+                  input#logradouro.form-control(ng-model='ctr.endereco.logradouro', type='text', name='logradouro', placeholder='Insira seu logradouro...', required)
+                  p.help-block(ng-show="enderecoForm.logradouro.$invalid && !enderecoForm.logradouro.$pristine" ) Logradouro inválido
 
-            .form-group
-               label(for='bairro') Bairro
-               input.form-control(ng-model='ctr.endereco.bairro', type='text', id='bairro', placeholder='Insira seu bairro...')
+         .row
+            .col-md-12
+               .form-group
+                  label(for='complemento') Complemento
+                  input#complemento.form-control(ng-model='ctr.endereco.complemento', type='text', name='complemento', placeholder='Insira seu complemento...')
 
-            .form-group
-               label(for='cidade') Cidade
-               input.form-control(ng-model='ctr.endereco.cidade', type='text', id='cidade', placeholder='Insira seu cidade...')
+         .row
+            .col-md-12
+               .form-group
+                  label(for='bairro') Bairro
+                  input#bairro.form-control(ng-model='ctr.endereco.bairro', type='text', name='bairro', placeholder='Insira seu bairro...')
 
-            .form-group
-               label(for='estado') Estado
-               input.form-control(ng-model='ctr.endereco.estado', type='text', id='estado', placeholder='Insira seu estado...')
+         .row
+            .col-md-12
+               .form-group
+                  label(for='cidade') Cidade
+                  input#cidade.form-control(ng-model='ctr.endereco.cidade', type='text', name='cidade', placeholder='Insira seu cidade...')
 
-            button(type="submit", class="btn btn-default", ng-disabled="enderecoForm.$invalid", ng-click='ctr.adicionaEndereco(ctr.endereco)') Enviar
+         .row
+            .col-md-12
+               .form-group
+                  label(for='estado') Estado
+                  input#estado.form-control(ng-model='ctr.endereco.estado', type='text', name='estado', placeholder='Insira seu estado...', ng-minlength='2', ng-maxlength='2')
+
+         .row
+            button.pull-right(type="submit", class="btn btn-primary") Enviar

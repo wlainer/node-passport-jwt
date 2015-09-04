@@ -1,24 +1,14 @@
 var model = require('../models/clienteModel.js');
 var util = require('./../utils/util');
-/**
- * clienteController.js
- *
- * @description :: Server-side logic for managing clientes.
- */
+
 module.exports = {
 
-    /**
-     * clienteController.list()
-     */
     list: function(req, res, callback) {
         util.paginate(req, model, function(err, clientes){
             callback(err, clientes, res);
-        });        
+        });
     },
 
-    /**
-     * clienteController.show()
-     */
     show: function(req, res, callback) {
         var id = req.params.id;
         model.findOne({_id: id}, function(err, cliente){
@@ -26,9 +16,6 @@ module.exports = {
         });
     },
 
-    /**
-     * clienteController.create()
-     */
     create: function(req, res, callback) {
         var dados = req.body;
         var cliente = new model(dados);
@@ -47,9 +34,6 @@ module.exports = {
         });
     },
 
-    /**
-     * clienteController.update()
-     */
     update: function(req, res, callback) {
         var id = req.params.id;
         model.findOne({_id: id}, function(err, cliente){
@@ -68,7 +52,7 @@ module.exports = {
             cliente.nome =  req.body.nome ? req.body.nome : cliente.nome;
 			cliente.descricao =  req.body.descricao ? req.body.descricao : cliente.descricao;
 			cliente.created_at =  req.body.created_at ? req.body.created_at : cliente.created_at;
-			
+
             cliente.save(function(err, cliente){
                 if(err) {
                     return res.json(500, {
@@ -85,9 +69,6 @@ module.exports = {
         });
     },
 
-    /**
-     * clienteController.remove()
-     */
     remove: function(req, res, callback) {
         var id = req.params.id;
         model.findByIdAndRemove(id, function(err, cliente){

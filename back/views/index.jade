@@ -1,10 +1,10 @@
 extends layout
 
 block body
-  .navbar.navbar-default
+  .navbar.navbar-inverse
     .container
       .navbar-header
-        a.navbar-brand(href="/") Dicom
+        a.navbar-brand(href="/") Exemplo
       .navbar-collapse.collapse
         ul.nav.navbar-nav.navbar-right
           li.dropdown
@@ -18,7 +18,7 @@ block body
                 a(href='#')
                   i.glyphicon.glyphicon-lock Logout
 
-  div.container(ng-view, ng-cloak)
+  div(ng-view, ng-cloak)
 
   //- div
   //-   | Angular seed app: v
@@ -28,9 +28,9 @@ block body
     a(href="http://www.bootply.com/85850")
       strong  Bootply.com
 
-  script(src='/js/lib/jquery/dist/jquery.js')
-  script(src='/js/lib/angular/angular.js')
-  script(src='/js/lib/angular-route/angular-route.js')
+  script(src='/js/lib/jquery/dist/jquery.min.js')
+  script(src='/js/lib/angular/angular.min.js')
+  script(src='/js/lib/angular-route/angular-route.min.js')
 
   //- script(src='js/app.js')
 
@@ -45,5 +45,5 @@ block body
   //- script(src='js/controllers/clientes.js')
   //- script(src='js/filters.js')
   //- script(src='js/directives.js')
-  script(src='/js/lib/bootstrap/dist/js/bootstrap.js')
+  script(src='/js/lib/bootstrap/dist/js/bootstrap.min.js')
 

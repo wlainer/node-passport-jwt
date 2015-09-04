@@ -1,4 +1,10 @@
-.panel-heading {line-height:32px;}
+.panel-heading {
+  line-height:32px;
+}
+
+.disabledTab {
+    pointer-events: none;
+}
 
 .content {
    padding: 15px 25px;
