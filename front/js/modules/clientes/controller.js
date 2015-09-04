@@ -7,7 +7,7 @@
     .controller('clienteListController', clienteListController)
     .controller('clienteShowController', clienteShowController);
 
-  function clienteCreateController(ClientesService) {
+  function clienteCreateController(ClientesService, recuperarEndereco) {
     var vm = this;
 
     vm.title = 'Cadastrando novo Cliente';
@@ -29,6 +29,16 @@
     vm.adicionaEndereco = function(endereco) {
       vm.enderecos.push(angular.copy(endereco));
       vm.endereco = {};
+    };
+
+    vm.pesquisarCep = function(cep) {
+      recuperarEndereco.find(cep)
+        .success(function(data) {
+          parseEndereco(data, vm.endereco);
+        })
+        .error(function(err) {
+          console.log(err);
+        });
     };
 
 
@@ -66,6 +76,14 @@
 
   clienteShowController.$inject = ['ClientesService', '$routeParams'];
   clienteListController.$inject = ['ClientesService'];
-  clienteCreateController.$inject = ['ClientesService'];
+  clienteCreateController.$inject = ['ClientesService', 'recuperarEndereco'];
 
 })();
+
+function parseEndereco(data, endereco) {
+    endereco.logradouro = data.logradouro;
+    endereco.bairro = data.bairro;
+    endereco.cidade = data.cidade;
+    endereco.estado = data.estado;
+    endereco.cep = data.cep;
+}

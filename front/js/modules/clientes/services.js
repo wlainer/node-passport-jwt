@@ -3,7 +3,8 @@
   'use strict';
 
   angular.module('ClientesServiceModule', [])
-    .service('ClientesService', ClientesService);
+    .service('ClientesService', ClientesService)
+    .service('recuperarEndereco', recuperarEndereco);
 
   function ClientesService($http) {
     var urlBase = '//localhost:3000/api/clientes';
@@ -29,6 +30,16 @@
     };
   };
 
+  function recuperarEndereco($http) {
+    var urlBase = 'http://api.postmon.com.br/v1/cep';
+
+    this.find = function(cep) {
+      return $http.get(urlBase + '/' + cep);
+    };
+
+  };
+
   ClientesService.$inject = ['$http'];
+  recuperarEndereco.$inject = ['$http'];
 
 })();
