@@ -1,8 +1,8 @@
 back/node_modules/
 front/node_modules/
 
-front/js/lib
-front/js/dist
+front/app/js/lib
+front/app/js/dist
 front/.bowerrc
 
 *.html
