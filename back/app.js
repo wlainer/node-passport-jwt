@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 // app.use(cookieParser());
-app.use(express.static(path.join(__dirname, './../front')));
+app.use(express.static(path.join(__dirname, './../front/app')));
 // app.use(session({ secret: 'keyboard cat' }));
 app.use(passport.initialize());
 app.use(passport.session());
