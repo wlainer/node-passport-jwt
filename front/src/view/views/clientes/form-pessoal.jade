@@ -1,21 +1,25 @@
-form.form.form-vertical(name='clienteForm', role="form", ng-submit="ctr.adicionaCliente(clienteForm.$valid)", novalidate)
+.row
+  .col-md-12
 
-  .form-group(ng-class="{ 'has-error' : clienteForm.nome.$invalid && !clienteForm.nome.$pristine }")
-    label(for='nome') * Nome
-    input#nome.form-control(ng-model='ctr.cliente.nome', type='text', name='nome', placeholder='Insira seu nome...', required)
-    p.help-block(ng-show="clienteForm.nome.$invalid && !clienteForm.nome.$pristine" ) Seu nome é obrigatório
+    form.form.form-vertical(name='clienteForm', role="form", ng-submit="ctr.adicionaCliente(clienteForm.$valid)", novalidate)
+      .form-group(ng-class="{ 'has-error' : clienteForm.nome.$invalid && !clienteForm.nome.$pristine }")
+        label(for='nome') * Nome
+        input#nome.form-control(ng-model='ctr.cliente.nome', type='text', name='nome', placeholder='Insira seu nome...', required)
+        p.help-block(ng-show="clienteForm.nome.$invalid && !clienteForm.nome.$pristine" ) Seu nome é obrigatório
 
-  .form-group
-    label(for='telefone') Telefone
-    input#telefone.form-control(ng-model='ctr.cliente.telefone', type='text', name='telefone', placeholder='Insira seu telefone...')
+      .form-group
+        label(for='telefone') Telefone
+        input#telefone.form-control(ng-model='ctr.cliente.telefone', type='text', name='telefone', placeholder='Insira seu telefone...')
 
-  .form-group(ng-class="{ 'has-error' : clienteForm.email.$invalid && !clienteForm.email.$pristine }")
-    label(for='email') Email
-    input#email.form-control(ng-model='ctr.cliente.email', type='email', name='email', placeholder='Insira seu email...')
-    p.help-block(ng-show="clienteForm.email.$invalid && !clienteForm.email.$pristine" ) Email inválido
+      .form-group(ng-class="{ 'has-error' : clienteForm.email.$invalid && !clienteForm.email.$pristine }")
+        label(for='email') Email
+        input#email.form-control(ng-model='ctr.cliente.email', type='email', name='email', placeholder='Insira seu email...')
+        p.help-block(ng-show="clienteForm.email.$invalid && !clienteForm.email.$pristine" ) Email inválido
 
-  .form-group
-    label(for='observacao') Observação
-    input#observacao.form-control(ng-model='ctr.cliente.observacao', type='text', name='observacao', placeholder='Insira uma observacao...')
+      .form-group
+        label(for='observacao') Observação
+        input#observacao.form-control(ng-model='ctr.cliente.observacao', type='text', name='observacao', placeholder='Insira uma observacao...')
 
-   button.pull-right(type="submit", class="btn btn-primary") Enviar
+       .pull-right
+          button(type="submit", class="btn btn-danger") Cancelar
+          button(type="submit", class="btn btn-primary") Enviar

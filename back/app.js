@@ -15,6 +15,7 @@ var api = {};
 // api.index = require('./routes/index');
 // api.users = require('./routes/users');
 api.clientes = require('./routes/api/clientes');
+api.enderecos = require('./routes/api/enderecos');
 
 var app = express();
 

@@ -1,4 +1,5 @@
 var express = require('express');
+var enderecos = require('./enderecos');
 var router = express.Router();
 var controller = require('./../../controllers/clienteController.js');
 var util = require('./../../utils/util');
@@ -22,5 +23,8 @@ router.put('/:id', function(req, res) {
 router.delete('/:id', function(req, res) {
    controller.remove(req, res, util.callback);
 });
+
+router.use('/:clienteId/enderecos', enderecos);
+
 
 module.exports = router;

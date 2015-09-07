@@ -1,7 +1,7 @@
 module.exports = {
-   paginate: function(req, model, callback) {
-      var query = model.find({});
-      query.skip(req.query.skip).limit(req.query.limit).exec('find', callback);
+   paginate: function(req, model, query, projection, callback) {
+      var query = model.find(query);
+      query.skip(req.query.skip).limit(req.query.limit).select(projection).exec('find', callback);
    },
 
    callback: function(err, data, res) {

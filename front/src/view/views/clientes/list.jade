@@ -1,25 +1,27 @@
 .container
-   .col-md-12
+  .row
+    .col-md-12
       .panel.panel-default(data-ng-init="module = 'clientes'")
-         .panel-heading.clearfix
-            strong {{ ctr.title }}
-            a(href='/clientes/add').btn.btn-default.btn-sm.pull-right Novo
-         .panel-body
-            table.table.table-condensed.table-hover
-               thead
-                  tr
-                     th(style='width:30%') Nome
-                     th(style='width:20%') Telefone
-                     th(style='width:30%') Email
-                     th.text-center(style='width:10%') Alterar
-                     th.text-center(style='width:10%') Excluir
-               tbody
-                  tr(data-ng-repeat='item in ctr.list')
-                     td {{ item.nome }}
-                     td {{ item.telefone }}
-                     td {{ item.email }}
-                     td.text-center
-                        a(data-ng-href='/{{ module }}/{{ item._id }}')
-                           span.glyphicon.glyphicon-pencil(aria-hidden="true")
-                     td.text-center
-                        span.glyphicon.glyphicon-trash(aria-hidden="true")
+        .panel-heading.clearfix
+          strong {{ ctr.title }}
+          a(href='/clientes/add').btn.btn-default.btn-sm.pull-right Novo
+        .panel-body
+          table.table.table-condensed.table-hover
+            thead
+              tr
+                th(style='width:30%') Nome
+                th(style='width:20%') Telefone
+                th(style='width:30%') Email
+                th.text-center(style='width:10%') Alterar
+                th.text-center(style='width:10%') Excluir
+            tbody
+              tr(data-ng-repeat='item in ctr.list')
+                td {{ item.nome }}
+                td {{ item.telefone }}
+                td {{ item.email }}
+                td.text-center
+                  button.btn.btn-warning.btn-xs(go-click='/{{ module }}/{{ item._id }}/edit')
+                    span.glyphicon.glyphicon-pencil(aria-hidden="true")
+                td.text-center
+                  button.btn.btn-danger.btn-xs(go-click='/{{ module }}/{{ item._id }}/edit')
+                    span.glyphicon.glyphicon-trash(aria-hidden="true")

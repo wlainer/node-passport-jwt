@@ -1,5 +1,5 @@
 var express = require('express');
-var router = express.Router();
+var router = express.Router({mergeParams: true});
 var controller = require('./../../controllers/enderecoController.js');
 var util = require('./../../utils/util');
 
@@ -7,7 +7,7 @@ router.get('/', function(req, res) {
    controller.list(req, res, util.callback);
 });
 
-router.get('/:id', function(req, res) {
+router.get('/:enderecoId', function(req, res) {
    controller.show(req, res, util.callback);
 });
 

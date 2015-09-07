@@ -1,38 +1,38 @@
 .container
-   .row
-      .col-md-12
-         .alert(role='alert', ng-show='ctr.showAlert', ng-class='ctr.alertClass') {{ ctr.alertMessage }}
+  .row
+    .col-md-12
+      div(flash-message="5000")
 
-   .row
-      .col-md-12
-         .panel.panel-default(data-ng-init="module = 'clientes'")
-            .panel-heading.clearfix
-               strong {{ ctr.title }}
-               //- button.btn.btn-default.btn-sm.pull-right(type="button", ng-disabled="clienteForm.$invalid") Salvar
-            .panel-body
-               ul.nav.nav-tabs(role='tablist')
-                  li.active(role='presentation')
-                     a(data-target='#pessoais', aria-controls='pessoais', role='tab', data-toggle='tab') Dados pessoais
+  .row
+    .col-md-12
+      .panel.panel-default(data-ng-init="module = 'clientes'")
+        .panel-heading.clearfix
+          strong {{ ctr.title }}
+          //- button.btn.btn-default.btn-sm.pull-right(type="button", ng-disabled="clienteForm.$invalid") Salvar
+        .panel-body
+          ul.nav.nav-tabs(role='tablist')
+            li.active(role='presentation')
+              a(data-target='#pessoais', aria-controls='pessoais', role='tab', data-toggle='tab') Dados pessoais
 
-                  li(role='presentation', ng-class="!!ctr.cliente._id? '' : 'disabled disabledTab'")
-                     a(data-target='#endereco', aria-controls='endereco', role='tab', data-toggle='tab') Endereços
+            li(role='presentation', ng-class="!!ctr.cliente._id? '' : 'disabled disabledTab'")
+              a(data-target='#endereco', aria-controls='endereco', role='tab', data-toggle='tab') Endereços
 
-                  li(role='presentation', ng-class="!!ctr.cliente._id? '' : 'disabled disabledTab'")
-                     a(data-target='#contatos', aria-controls='contatos', role='tab', data-toggle='tab') Contatos
+            li(role='presentation', ng-class="!!ctr.cliente._id? '' : 'disabled disabledTab'")
+              a(data-target='#contatos', aria-controls='contatos', role='tab', data-toggle='tab') Contatos
 
-                  li(role='presentation', ng-class="!!ctr.cliente._id? '' : 'disabled disabledTab'")
-                     a(data-target='#configuracoes', aria-controls='configuracoes', role='tab', data-toggle='tab') Configurações
+            li(role='presentation', ng-class="!!ctr.cliente._id? '' : 'disabled disabledTab'")
+              a(data-target='#configuracoes', aria-controls='configuracoes', role='tab', data-toggle='tab') Configurações
 
-               .tab-content
-                  .tab-pane.active#pessoais(role="tabpanel")
-                     .content
-                        h4
-                           span.glyphicon.glyphicon-triangle-right(aria-hidden="true")
-                           |  Dados Pessoais
-                        include form-pessoal
-                  .tab-pane#endereco(role="tabpanel")
-                     .content
-                        h4
-                           span.glyphicon.glyphicon-triangle-right(aria-hidden="true")
-                           |  Endereços
-                        include form-endereco
+          .tab-content
+            .tab-pane.active#pessoais(role="tabpanel")
+              .content
+                h4
+                  span.glyphicon.glyphicon-triangle-right(aria-hidden="true")
+                  |  Dados Pessoais
+                include form-pessoal
+            .tab-pane#endereco(role="tabpanel")
+              .content
+                h4
+                  span.glyphicon.glyphicon-triangle-right(aria-hidden="true")
+                  |  Endereços
+                include form-endereco
