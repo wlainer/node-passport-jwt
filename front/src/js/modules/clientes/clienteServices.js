@@ -2,11 +2,11 @@
 
   'use strict';
 
-  angular.module('ClientesServiceModule', [])
-    .service('ClientesService', ClientesService)
+  angular.module('clientesServiceModule', [])
+    .service('clientesService', clientesService)
     .service('recuperarEndereco', recuperarEndereco);
 
-  function ClientesService($http) {
+  function clientesService($http) {
     var urlBase = '//localhost:3000/api/clientes';
 
     this.find = function() {
@@ -39,7 +39,7 @@
 
   };
 
-  ClientesService.$inject = ['$http'];
+  clientesService.$inject = ['$http'];
   recuperarEndereco.$inject = ['$http'];
 
 })();

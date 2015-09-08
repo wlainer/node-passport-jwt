@@ -1,7 +1,7 @@
 .row
   .col-md-12
 
-    form.form.form-vertical(name='clienteForm', role="form", ng-submit="ctr.adicionaCliente(clienteForm.$valid)", novalidate)
+    form.form.form-vertical(name='clienteForm', role="form", ng-submit="ctr.createOrUpdate(clienteForm.$valid)", novalidate)
       .form-group(ng-class="{ 'has-error' : clienteForm.nome.$invalid && !clienteForm.nome.$pristine }")
         label(for='nome') * Nome
         input#nome.form-control(ng-model='ctr.cliente.nome', type='text', name='nome', placeholder='Insira seu nome...', required)

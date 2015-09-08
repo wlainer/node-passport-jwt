@@ -4,8 +4,8 @@ html(ng-app="myApp")
     meta(charset='utf8')
     base(href='/')
     title Mean Estudos
-    link(rel='stylesheet', href='./js/lib/bootstrap/dist/css/bootstrap.css')
-    link(rel='stylesheet', href='/css/app.css')
+    link(rel='stylesheet', href='js/lib/bootstrap/dist/css/bootstrap.css')
+    link(rel='stylesheet', href='css/app.css')
   body
     .navbar.navbar-inverse
       .container
@@ -24,7 +24,7 @@ html(ng-app="myApp")
                   a(href='#')
                     i.glyphicon.glyphicon-lock Logout
 
-    div(ng-view, ng-cloak)
+    div(ui-view, ng-cloak)
 
     //- div
     //-   | Angular seed app: v
@@ -34,11 +34,14 @@ html(ng-app="myApp")
       a(href="http://www.bootply.com/85850")
         strong  Bootply.com
 
-    script(src='./js/lib/jquery/dist/jquery.min.js')
-    script(src='./js/lib/angular/angular.min.js')
-    script(src='./js/lib/angular-route/angular-route.min.js')
-    script(src='./js/lib/angular-flash-alert/dist/angular-flash.min.js')
+    // bower:js
+    // endbower
+
+    //- script(src='./js/lib/jquery/dist/jquery.min.js')
+    //- script(src='./js/lib/angular/angular.min.js')
+    //- script(src='./js/lib/angular-route/angular-route.min.js')
+    //- script(src='./js/lib/angular-flash-alert/dist/angular-flash.min.js')
+    //- script(src='./js/lib/bootstrap/dist/js/bootstrap.min.js')
 
     script(src='/js/dist/concat.js')
-    script(src='./js/lib/bootstrap/dist/js/bootstrap.min.js')
 

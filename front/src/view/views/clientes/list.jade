@@ -4,7 +4,7 @@
       .panel.panel-default(data-ng-init="module = 'clientes'")
         .panel-heading.clearfix
           strong {{ ctr.title }}
-          a(href='/clientes/add').btn.btn-default.btn-sm.pull-right Novo
+          a(ui-sref="addClientes").btn.btn-default.btn-sm.pull-right Novo
         .panel-body
           table.table.table-condensed.table-hover
             thead
@@ -16,11 +16,13 @@
                 th.text-center(style='width:10%') Excluir
             tbody
               tr(data-ng-repeat='item in ctr.list')
-                td {{ item.nome }}
+                td
+                  a(href="/{{ module }}/{{ item._id }}")
+                    {{ item.nome }}
                 td {{ item.telefone }}
                 td {{ item.email }}
                 td.text-center
-                  button.btn.btn-warning.btn-xs(go-click='/{{ module }}/{{ item._id }}/edit')
+                  button.btn.btn-warning.btn-xs(ui-sref="editClientes({id: item._id })")
                     span.glyphicon.glyphicon-pencil(aria-hidden="true")
                 td.text-center
                   button.btn.btn-danger.btn-xs(go-click='/{{ module }}/{{ item._id }}/edit')

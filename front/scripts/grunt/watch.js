@@ -7,7 +7,7 @@ module.exports = function(grunt, tasks) {
    tasks.watch = {
       jade: {
          files: './src/view/**/*.jade',
-         tasks: ['jade']
+         tasks: ['jade', 'wiredep']
       },
       js: {
          files: ['./src/js/**/*.js',
@@ -15,6 +15,10 @@ module.exports = function(grunt, tasks) {
             '!./src/js/dist/**/*.js'
          ],
          tasks: ['clean', 'concat', 'uglify']
+      },
+      bower: {
+         files: 'bower.json',
+         tasks: ['wiredep']
       }
    };
 

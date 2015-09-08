@@ -4,7 +4,6 @@
   angular.module('myApp.preventDefault', [])
     .directive('preventDefault', preventDefault);
 
-
   function preventDefault() {
     var directive = {
       link: link,

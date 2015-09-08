@@ -27,8 +27,11 @@ module.exports = function(grunt) {
     // Watch
     tasks = require(grunt.uriTask + 'watch.js')(grunt, tasks);
 
+    // Wiredep
+    tasks = require(grunt.uriTask + 'wiredep.js')(grunt, tasks);
+
     // Register The Tasks
-    grunt.registerTask('all', ['clean', 'concat', 'uglify', 'jade']);
+    grunt.registerTask('all', ['clean', 'concat', 'uglify', 'jade', 'wiredep']);
     grunt.registerTask('default', ['all', 'watch']);
 
     // Initialize The Grunt Configuration

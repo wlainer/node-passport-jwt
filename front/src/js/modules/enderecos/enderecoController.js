@@ -2,13 +2,13 @@
   'use strict';
 
   // Definição dos Controllers usando o Service para reqs HTTP
-  angular.module('ClientesControllerModule', [])
-    .controller('clienteCreateController', clienteCreateController)
-    .controller('clienteListController', clienteListController)
-    .controller('clienteEditController', clienteEditController)
-    .controller('clienteShowController', clienteShowController);
+  angular.module('enderecoControllerModule', []);
+    // .controller('clienteCreateOrUpdateController', clienteCreateOrUpdateController)
+    // .controller('clienteListController', clienteListController)
+    // .controller('clienteEditController', clienteEditController)
+    // .controller('clienteShowController', clienteShowController);
 
-  function clienteCreateController(ClientesService, recuperarEndereco, Flash) {
+  function clienteCreateOrUpdateController(clientesService, recuperarEndereco, Flash) {
     var vm = this;
 
     vm.title = 'Cadastrando novo Cliente';
@@ -17,9 +17,9 @@
     vm.endereco = {};
     vm.enderecos = [];
 
-    vm.adicionaCliente = function(isValid) {
+    vm.createOrUpdate = function(isValid) {
       if (isValid) {
-        ClientesService.create(vm.cliente)
+        clientesService.create(vm.cliente)
           .success(function(data) {
             vm.cliente._id = data._id;
             console.log('Cliente gravado com sucesso.');
@@ -56,7 +56,7 @@
     };
   }
 
-  function clienteListController(ClientesService, Flash) {
+  function clienteListController(clientesService, Flash) {
     var vm = this;
 
     vm.title = 'Listagem de Clientes';
@@ -64,7 +64,7 @@
     // var message = '<strong>Well done!</strong> You successfully read this important alert message.';
     // Flash.create('success', message, 'custom-class');
 
-    ClientesService.find()
+    clientesService.find()
       .success(function(data) {
         vm.list = data.data;
         console.log('Sucesso', data);
@@ -74,12 +74,12 @@
       });
   }
 
-  function clienteShowController(ClientesService, $routeParams) {
+  function clienteShowController(clientesService, $stateParams) {
     var vm = this;
 
     vm.title = 'Exibindo Dados do Cliente';
 
-    ClientesService.get($routeParams.id)
+    clientesService.get($stateParams.id)
       .success(function(data) {
         vm.item = data.data;
         console.log('Sucesso', data);
@@ -89,7 +89,7 @@
       });
   }
 
-  function clienteEditController(ClientesService, recuperarEndereco, $routeParams) {
+  function clienteEditController(clientesService, recuperarEndereco, $stateParams) {
     var vm = this;
 
     vm.title = 'Editando Cliente';
@@ -108,7 +108,7 @@
       alert('excluir' + id);
     };
 
-    ClientesService.get($routeParams.id)
+    clientesService.get($stateParams.id)
       .success(function(data) {
         vm.cliente = data.data;
         vm.enderecos = data.data.endereco;
@@ -131,10 +131,10 @@
 
   }
 
-  clienteListController.$inject = ['ClientesService', 'Flash'];
-  clienteEditController.$inject = ['ClientesService', 'recuperarEndereco', '$routeParams'];
-  clienteShowController.$inject = ['ClientesService', '$routeParams'];
-  clienteCreateController.$inject = ['ClientesService', 'recuperarEndereco', 'Flash'];
+  clienteListController.$inject = ['clientesService', 'Flash'];
+  clienteEditController.$inject = ['clientesService', 'recuperarEndereco', '$stateParams'];
+  clienteShowController.$inject = ['clientesService', '$stateParams'];
+  clienteCreateOrUpdateController.$inject = ['clientesService', 'recuperarEndereco', 'Flash'];
 
   function parseEndereco(data, endereco) {
     endereco.logradouro = data.logradouro;

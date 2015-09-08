@@ -4,20 +4,20 @@
   // Declare app level module which depends on filters, and services
 
   angular.module('myApp', [
-    'ngRoute',
+    'ui.router',
     'myApp.Clientes',
     'flash'
     // 'myApp.filters',
     // 'myApp.services',
     // 'myApp.directives'
   ]).
-  config(['$routeProvider', '$locationProvider', myAppConfig]);
+  config(['$urlRouterProvider', '$locationProvider', myAppConfig]);
 
-  function myAppConfig($routeProvider, $locationProvider) {
-    $routeProvider.otherwise({redirectTo: '/clientes'});
+  function myAppConfig($urlRouterProvider, $locationProvider) {
+    $urlRouterProvider.otherwise('/clientes');
     $locationProvider.html5Mode(true);
   }
 
-  myAppConfig.$inject = ['$routeProvider', '$locationProvider'];
+  myAppConfig.$inject = ['$urlRouterProvider', '$locationProvider'];
 
 }());
