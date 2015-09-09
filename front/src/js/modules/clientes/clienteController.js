@@ -7,28 +7,32 @@
     .controller('clienteListController', clienteListController)
     .controller('clienteShowController', clienteShowController);
 
-  function clienteCreateOrUpdateController(clientesService, recuperarEndereco, Flash, $stateParams) {
+  function clienteCreateOrUpdateController($scope, clientesService, recuperarEndereco, Flash, $stateParams) {
     var vm = this,
-        id = $stateParams.id;
+        id = $stateParams.id,
+        action = !!id ? 'update' : 'create';
+
+    $scope.parent.id = id;
+    $scope.parent.title = !!id ? 'Editando Cliente' : 'Cadastrando novo Cliente';
 
     vm.createOrUpdate = createOrUpdate;
-    vm.title = !!id ? 'Editando Cliente' : 'Cadastrando novo Cliente';
+    // vm.title = !!id ? 'Editando Cliente' : 'Cadastrando novo Cliente';
     vm.cliente = {};
 
     if (!!id) {
-      clientesService.get($stateParams.id)
+      clientesService.get(id)
         .success(function(data) {
           vm.cliente = data.data;
-          vm.enderecos = data.data.endereco;
-          console.log('Sucesso', data);
+          console.log('Recuperou cliente com id. ', id);
         })
         .error(function(err) {
-          console.log('Erro', err);
+          console.log('Erro ao recuperar cliente com id', err);
         });
     }
 
     function success(data) {
       vm.cliente._id = data._id;
+      $scope.parent.id = vm.cliente._id;
       console.log('Cliente gravado com sucesso.');
       Flash.create('success', 'Cliente gravado com sucesso.');
     }
@@ -40,7 +44,7 @@
 
     function createOrUpdate(isValid) {
       if (isValid) {
-        clientesService.create(vm.cliente)
+        clientesService[action](vm.cliente)
           .success(success)
           .error(error);
       } else {
@@ -79,7 +83,7 @@
       });
   }
 
-  clienteCreateOrUpdateController.$inject = ['clientesService', 'recuperarEndereco', 'Flash', '$stateParams'];
+  clienteCreateOrUpdateController.$inject = ['$scope', 'clientesService', 'recuperarEndereco', 'Flash', '$stateParams'];
   clienteShowController.$inject = ['clientesService', '$stateParams'];
   clienteListController.$inject = ['clientesService', 'Flash'];
 })();

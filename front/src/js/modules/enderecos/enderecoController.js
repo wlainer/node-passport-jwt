@@ -2,11 +2,30 @@
   'use strict';
 
   // Definição dos Controllers usando o Service para reqs HTTP
-  angular.module('enderecoControllerModule', []);
+  angular.module('enderecoControllerModule', [])
+        .controller('enderecoController', enderecoController);
     // .controller('clienteCreateOrUpdateController', clienteCreateOrUpdateController)
     // .controller('clienteListController', clienteListController)
     // .controller('clienteEditController', clienteEditController)
     // .controller('clienteShowController', clienteShowController);
+
+    function enderecoController(enderecoService, $stateParams) {
+      var vm = this;
+
+      vm.enderecos = [];
+
+      enderecoService.find($stateParams.id)
+      .success(function(data) {
+        vm.enderecos = data.data;
+        console.log('Sucesso', data);
+      })
+      .error(function(err) {
+        console.log('Erro', err);
+      });
+
+    }
+
+    enderecoController.$inject = ['enderecoService', '$stateParams'];
 
   function clienteCreateOrUpdateController(clientesService, recuperarEndereco, Flash) {
     var vm = this;

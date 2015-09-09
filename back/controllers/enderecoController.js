@@ -5,7 +5,8 @@ module.exports = {
 
     list: function(req, res, callback) {
         util.paginate(req, model, {'_id': req.params.clienteId},{'endereco':1}, function(err, clientes){
-            callback(err, clientes, res);
+            var enderecos = clientes[0].endereco;
+            callback(err, enderecos, res);
         });
     },
 

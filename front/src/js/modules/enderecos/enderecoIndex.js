@@ -2,22 +2,22 @@
   'use strict';
 
   angular.module('myApp.Enderecos', [
-      // 'ui.router',
-      // 'clientesServiceModule',
-      // 'clientesControllerModule',
+      'ui.router',
+      'enderecoServiceModule',
+      'enderecoControllerModule',
       // 'myApp.preventDefault',
       // 'myApp.goClick'
     ])
-    .config(['$stateProvider', clienteConfig]);
+    .config(['$stateProvider', enderecoConfig]);
 
-  function clienteConfig($stateProvider) {
-    // $stateProvider
-    //   .state('clientes', {
-    //     url: "/clientes",
-    //     templateUrl: "views/clientes/list.html",
-    //     controller: 'clienteListController',
-    //     controllerAs: 'ctr'
-    //   })
+  function enderecoConfig($stateProvider) {
+    $stateProvider
+      .state('clientesForm.enderecos', {
+        url: "/clientes/:id/enderecos",
+        templateUrl: "views/clientes/form-endereco.html",
+        controller: 'enderecoController',
+        controllerAs: 'ctr'
+      })
     //   .state('addClientes', {
     //     url: "/clientes/add",
     //     templateUrl: "views/clientes/create.html",
@@ -37,27 +37,8 @@
     //     controllerAs: 'ctr'
     //   })
   }
-
-  // function clienteConfig($stateProvider) {
-  //   $stateProvider
-  //   .when('/clientes/add', {
-  //     templateUrl: 'views/clientes/create.html',
-  //     controller: 'clienteCreateOrUpdateController as ctr'
-  //   })
-  //   .when('/clientes/:id/edit', {
-  //     templateUrl: 'views/clientes/create.html',
-  //     controller: 'clienteEditController as ctr'
-  //   })
-  //   .when('/clientes/:id', {
-  //     templateUrl: 'views/clientes/show.html',
-  //     controller: 'clienteShowController as ctr'
-  //   })
-  //   .when('/clientes', {
-  //     templateUrl: 'views/clientes/list.html',
-  //     controller: 'clienteListController as ctr'
-  //   });
   // }
 
-  clienteConfig.$inject = ['$stateProvider'];
+  enderecoConfig.$inject = ['$stateProvider'];
 
 })();

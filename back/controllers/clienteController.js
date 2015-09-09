@@ -4,14 +4,14 @@ var util = require('./../utils/util');
 module.exports = {
 
     list: function(req, res, callback) {
-        util.paginate(req, model, function(err, clientes){
+        util.paginate(req, model, {}, {'endereco': 0},function(err, clientes){
             callback(err, clientes, res);
         });
     },
 
     show: function(req, res, callback) {
         var id = req.params.id;
-        model.findOne({_id: id}, function(err, cliente){
+        model.findOne({_id: id},{'endereco': 0}, function(err, cliente){
             callback(err, cliente, res);
         });
     },
@@ -50,7 +50,9 @@ module.exports = {
             }
 
             cliente.nome =  req.body.nome ? req.body.nome : cliente.nome;
-			cliente.descricao =  req.body.descricao ? req.body.descricao : cliente.descricao;
+            cliente.telefone =  req.body.telefone ? req.body.telefone : cliente.telefone;
+            cliente.email =  req.body.email ? req.body.email : cliente.email;
+			cliente.observacao =  req.body.observacao ? req.body.observacao : cliente.observacao;
 			cliente.created_at =  req.body.created_at ? req.body.created_at : cliente.created_at;
 
             cliente.save(function(err, cliente){

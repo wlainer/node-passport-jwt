@@ -5,6 +5,8 @@
       'ui.router',
       'clientesServiceModule',
       'clientesControllerModule',
+      'formControllerModule',
+      'myApp.Enderecos',
       'myApp.preventDefault',
       'myApp.goClick'
     ])
@@ -18,15 +20,21 @@
         controller: 'clienteListController',
         controllerAs: 'ctr'
       })
-      .state('addClientes', {
+      .state('clientesForm', {
+        abstract: true,
+        templateUrl: 'views/clientes/create.html',
+        controller: 'formController',
+        controllerAs: 'parent',
+      })
+      .state('clientesForm.addClientes', {
         url: "/clientes/add",
-        templateUrl: "views/clientes/create.html",
+        templateUrl: "views/clientes/form-pessoal.html",
         controller: 'clienteCreateOrUpdateController',
         controllerAs: 'ctr'
       })
-      .state('editClientes', {
+      .state('clientesForm.editClientes', {
         url: "/clientes/:id/edit",
-        templateUrl: "views/clientes/create.html",
+        templateUrl: "views/clientes/form-pessoal.html",
         controller: 'clienteCreateOrUpdateController',
         controllerAs: 'ctr'
       })

@@ -2,15 +2,16 @@
 
   'use strict';
 
-  angular.module('enderecoServiceModule', []);
+  angular.module('enderecoServiceModule', [])
+      .service('enderecoService', enderecoService);
     // .service('clientesService', clientesService)
     // .service('recuperarEndereco', recuperarEndereco);
 
-  function clientesService($http) {
+  function enderecoService($http) {
     var urlBase = '//localhost:3000/api/clientes';
 
-    this.find = function() {
-      return $http.get(urlBase);
+    this.find = function(id) {
+      return $http.get(urlBase + '/' + id + '/enderecos');
     };
 
     this.get = function(id) {
@@ -39,7 +40,7 @@
 
   };
 
-  clientesService.$inject = ['$http'];
+  enderecoService.$inject = ['$http'];
   recuperarEndereco.$inject = ['$http'];
 
 })();
