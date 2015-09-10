@@ -15,7 +15,7 @@
               a(ui-sref=".editClientes({id: parent.id})", aria-controls='pessoais', role='tab', data-toggle='tab') Dados pessoais
 
             li(role='presentation', ui-sref-active="active", ng-class="!!parent.id  ? '' : 'disabled disabledTab'")
-              a(ui-sref=".enderecos({id: parent.id})", aria-controls='endereco', role='tab', data-toggle='tab') Endereços
+              a(ui-sref=".enderecos({clienteId: parent.id})", aria-controls='endereco', role='tab', data-toggle='tab') Endereços
 
             li(role='presentation', ui-sref-active="active", ng-class="!!parent.id  ? '' : 'disabled disabledTab'")
               a(aria-controls='contatos', role='tab', data-toggle='tab') Contatos
@@ -24,16 +24,3 @@
               a(aria-controls='configuracoes', role='tab', data-toggle='tab') Configurações
 
           .content(ui-view="")
-          //- .tab-content
-          //-   .tab-pane.active#pessoais(role="tabpanel")
-          //-     .content
-          //-       h4
-          //-         span.glyphicon.glyphicon-triangle-right(aria-hidden="true")
-          //-         |  Dados Pessoais
-          //-       include form-pessoal
-          //-   .tab-pane#endereco(role="tabpanel")
-          //-     .content
-          //-       h4
-          //-         span.glyphicon.glyphicon-triangle-right(aria-hidden="true")
-          //-         |  Endereços
-          //-       include form-endereco

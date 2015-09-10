@@ -1,0 +1,7 @@
+.list-group
+  a.list-group-item.clearfix(ng-click='ctr.carregarEndereco(item._id)', href='', data-ng-repeat='item in ctr.enderecos') {{ item.logradouro }}
+    span.pull-right
+      button.btn.btn-xs.btn-warning(ng-click='ctr.excluirEndereco(item._id)', prevent-default="")
+        span.glyphicon.glyphicon-trash
+
+

@@ -6,10 +6,6 @@
     pointer-events: none;
 }
 
-a[ng-click]{
-    cursor: pointer;
-}
-
 .content {
    padding: 15px 25px;
 }
@@ -21,6 +17,11 @@ footer {
   background-color:#f8f8f8;
 }
 
-.panel-endereco {
+.list-endereco {
    padding-top: 25px;
+}
+
+.form-endereco {
+  border-left: 1px solid #ccc;
+  padding-left: 20px;
 }

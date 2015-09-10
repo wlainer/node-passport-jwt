@@ -10,7 +10,8 @@ module.exports = {
          msg = '{Erro: ' + err + '}';
          msg.status = "error";
       } else {
-         msg.data = data;
+         if (!!data)
+            msg.data = data;
          msg.status = "success";
       }
       // console.log(msg);

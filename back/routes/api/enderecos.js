@@ -15,11 +15,11 @@ router.post('/', function(req, res) {
    controller.create(req, res, util.callback);
 });
 
-router.put('/:id', function(req, res) {
+router.put('/:enderecoId', function(req, res) {
    controller.update(req, res, util.callback);
 });
 
-router.delete('/:id', function(req, res) {
+router.delete('/:enderecoId', function(req, res) {
    controller.remove(req, res, util.callback);
 });
 

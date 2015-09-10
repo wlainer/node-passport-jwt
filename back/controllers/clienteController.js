@@ -1,17 +1,19 @@
 var model = require('../models/clienteModel.js');
 var util = require('./../utils/util');
 
+var projection = {'endereco': 0, 'contato': 0, 'configuracao': 0};
+
 module.exports = {
 
     list: function(req, res, callback) {
-        util.paginate(req, model, {}, {'endereco': 0},function(err, clientes){
+        util.paginate(req, model, {}, projection, function(err, clientes){
             callback(err, clientes, res);
         });
     },
 
     show: function(req, res, callback) {
         var id = req.params.id;
-        model.findOne({_id: id},{'endereco': 0}, function(err, cliente){
+        model.findOne({_id: id}, projection, function(err, cliente){
             callback(err, cliente, res);
         });
     },
