@@ -27,18 +27,25 @@ module.exports = {
 
   create: function(req, res, callback) {
     var dados = req.body;
-    var cliente = new model(dados);
+    var clienteId = req.params.clienteId;
 
-    cliente.save(function(err, cliente) {
+    model.findOne({_id: clienteId }, function(err, cliente) {
       if (err) {
         return res.json(500, {
-          message: 'Error saving cliente',
-          error: err
+          message: 'Error getting cliente.'
         });
       }
-      return res.json({
-        message: 'saved',
-        _id: cliente._id
+
+      cliente.endereco.push(dados);
+      cliente.save(function(err, cliente) {
+        if (err) {
+          return res.json(500, {
+            message: 'Error deleting endereço.'
+          });
+        }
+        res.json(204, {
+          message: 'Successfully created.'
+        });
       });
     });
   },
@@ -84,7 +91,9 @@ module.exports = {
     var clienteId = req.params.clienteId;
     var enderecoId = req.params.enderecoId;
 
-    model.findOne({_id: clienteId}, function(err, cliente) {
+    model.findOne({
+      _id: clienteId
+    }, function(err, cliente) {
       if (err) {
         return res.json(500, {
           message: 'Error getting cliente.'
@@ -104,7 +113,9 @@ module.exports = {
           });
         });
       } else {
-        res.json(500, {message: "Resource doesn't exist"});
+        res.json(500, {
+          message: "Resource doesn't exist"
+        });
       }
     });
   }

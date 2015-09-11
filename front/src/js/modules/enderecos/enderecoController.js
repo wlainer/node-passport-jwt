@@ -5,7 +5,8 @@
     .controller('enderecoController', enderecoController);
 
   function enderecoController(enderecoService, recuperarEnderecoService, $stateParams, Flash) {
-    var vm = this;
+    var vm = this,
+      clienteId = $stateParams.clienteId;
 
     vm.enderecos = [];
     vm.endereco = {};
@@ -27,10 +28,10 @@
 
     function createOrUpdate(isValid) {
       if (isValid) {
-        enderecoService.create(vm.endereco)
+        enderecoService.create(clienteId, vm.endereco)
           .success(function(data) {
-            vm.enderecos.push(data.data);
-            Flash.create('success', 'Preencha todos os campos obrigatórios.');
+            vm.enderecos.push(vm.endereco);
+            Flash.create('success', 'Endereço cadastrado com sucesso.');
           })
           .error(function(error) {
 
@@ -91,7 +92,6 @@
         }
       }
     }
-
   }
 
   enderecoController.$inject = ['enderecoService', 'recuperarEnderecoService', '$stateParams', 'Flash'];

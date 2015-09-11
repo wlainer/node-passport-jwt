@@ -17,7 +17,7 @@
       return $http.get(urlBase + '/' + clienteId + '/enderecos/' + enderecoId);
     };
 
-    this.create = function(data) {
+    this.create = function(clienteId, data) {
       return $http.post(urlBase + '/' + clienteId + '/enderecos', data);
     };
 

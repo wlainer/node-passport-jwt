@@ -2,11 +2,8 @@
   'use strict';
 
   angular.module('myApp.Enderecos', [
-      'ui.router',
       'enderecoServiceModule',
       'enderecoControllerModule',
-      // 'myApp.preventDefault',
-      // 'myApp.goClick'
     ])
     .config(['$stateProvider', enderecoConfig]);
 

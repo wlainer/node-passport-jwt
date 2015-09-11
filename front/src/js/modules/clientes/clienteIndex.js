@@ -2,7 +2,6 @@
   'use strict';
 
   angular.module('myApp.Clientes', [
-      'ui.router',
       'clientesServiceModule',
       'clientesControllerModule',
       'formControllerModule',
