@@ -1,3 +1,5 @@
+'use strict';
+
 var LocalStrategy = require('passport-local').Strategy;
 var JwtStrategy = require('passport-jwt').Strategy;
 var User = require('./../models/userModel');
@@ -34,7 +36,7 @@ module.exports = function(passport) {
 //     issuer : 'testIssuer',
 //     nome: 'teste',
 //     passReqToCallback: false
-// };  
+// };
 var JWT_STRATEGY_CONFIG = {
     secretOrKey: 'secret',
    'issuer': 'myApi',
@@ -51,7 +53,7 @@ var JWT_STRATEGY_CONFIG = {
             done(null, user);
         } else {
             done(null, false);
-            // or you could create a new account 
+            // or you could create a new account
         }
     });
 }));

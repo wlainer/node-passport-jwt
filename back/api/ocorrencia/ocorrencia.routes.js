@@ -1,8 +1,14 @@
+'use strict';
+
 var express = require('express');
 var router = express.Router();
 
-var Empresa = require('./empresa.index');
+var Ocorrencia = require('./ocorrencia.index');
 
-router.get('/', Empresa.list);
+router.get('/', Ocorrencia.list);
+router.get('/:id', Ocorrencia.read);
+router.post('/', Ocorrencia.create);
+router.delete('/:id', Ocorrencia.remove);
+router.put('/:id', Ocorrencia.update);
 
 module.exports = router;

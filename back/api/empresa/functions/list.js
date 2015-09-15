@@ -1,3 +1,5 @@
+'use strict';
+
 var Model = require("../empresa.model");
 
 module.exports = function(req, res){

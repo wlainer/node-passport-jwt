@@ -1,9 +1,11 @@
+'use strict';
+
 var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
 var ocorrencia = new Schema({
     numero: {type: Number}
-    , empresa: [{type: mongoose.Schema.Types.ObjectId, ref: 'Empresa'}]
+    , empresa: {type: mongoose.Schema.Types.ObjectId, ref: 'Empresa'}
     , descricao: { type: String, default: ''}
     , contato: { type: String, default: ''}
     , atribuido: { type: String, default: ''}

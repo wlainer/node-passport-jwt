@@ -32,7 +32,7 @@ require('./config/express')(app);
 var api = {};
 api.routes = require('./api/routes');
 
-app.use('/api/v1', api.routes);
+app.use(config.urlBase, api.routes);
 
  // redirect all others to the index (HTML5 history)
  app.get('*', function(req, res, next) {

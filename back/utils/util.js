@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   paginate: function(req, model, query, projection, callback) {
     var query = model.find(query);

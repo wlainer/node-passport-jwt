@@ -1,4 +1,6 @@
-var Model = require("../empresa.model");
+'use strict';
+
+var Model = require("../ocorrencia.model");
 
 module.exports = function(req, res){
   Model.find(function(err, data){

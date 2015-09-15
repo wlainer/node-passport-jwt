@@ -1,13 +1,14 @@
 'use strict';
 
-var should = require('chai').should();
 var expect = require('chai').expect;
 var app = require('../../app');
 var request = require('supertest');
 
 var Organizacao = require('./organizacao.model');
+var config = require('../../config/enviroment');
+var urlBase = (config.urlBase + '/organizacoes/');
 
-describe('API Organizacao', function() {
+describe('> API ORGANIZACAO', function() {
 
   var id = "";
 
@@ -18,9 +19,9 @@ describe('API Organizacao', function() {
     });
   });
 
-  it('should return a 200 response', function(done) {
+  it('should creates an organizacao', function(done) {
     request(app)
-      .post('/api/v1/organizacoes')
+      .post(urlBase)
       .set('Accept', 'application/json')
       .send({
         nome: 'Organizacao Teste'
@@ -33,9 +34,21 @@ describe('API Organizacao', function() {
       });
   });
 
-  it('should respond with JSON array', function(done) {
+   it('should get an existing organizacao', function(done) {
     request(app)
-      .get('/api/v1/organizacoes')
+      .get(urlBase  + id)
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end(function(err, res) {
+        if (err) return done(err);
+          expect(res.body).to.have.property('nome');
+        done();
+      });
+  });
+
+  it('should get all existing organizacao', function(done) {
+    request(app)
+      .get(urlBase)
       .expect(200)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
@@ -45,9 +58,9 @@ describe('API Organizacao', function() {
       });
   });
 
-  it('should be updated with a new name', function(done) {
+  it('should updates an existing organizacao', function(done) {
     request(app)
-      .put('/api/v1/organizacoes/' + id)
+      .put(urlBase + id)
       .set('Accept', 'application/x-www-form-urlencoded')
       .send({
         nome: "Organizacao nome alterado",
@@ -58,9 +71,9 @@ describe('API Organizacao', function() {
       });
   });
 
-  it('should remove an object', function(done) {
+  it('should delete an existing organizacao', function(done) {
     request(app)
-      .delete('/api/v1/organizacoes/' + id)
-      .expect(200, done);
+      .delete(urlBase + id)
+      .expect(204, done);
   });
 });

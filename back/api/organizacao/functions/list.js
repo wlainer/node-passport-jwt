@@ -1,3 +1,5 @@
+'use strict';
+
 var Model = require("../organizacao.model");
 
 module.exports = function(req, res){

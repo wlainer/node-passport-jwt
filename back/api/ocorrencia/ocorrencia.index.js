@@ -1,3 +1,9 @@
+'use strict';
+
 module.exports = {
-  list: require('./functions/list')
+  create: require('./functions/create')
+  , read: require('./functions/read')
+  , list: require('./functions/list')
+  , remove: require('./functions/remove')
+  , update: require('./functions/update')
 }

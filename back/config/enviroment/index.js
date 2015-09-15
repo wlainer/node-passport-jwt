@@ -24,6 +24,9 @@ var all = {
   // Server IP
   ip: process.env.IP || '0.0.0.0',
 
+  // urlBase
+  urlBase: '/api/v1',
+
   // // Should we populate the DB with sample data?
   // seedDB: true,
 
