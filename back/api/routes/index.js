@@ -3,10 +3,10 @@
 var express = require('express');
 var router = express.Router();
 
-var clienteRoutes = require('../clientes/clientes.routes');
+var empresaRoutes = require('../empresa/empresa.routes');
 var organizacaoRoutes = require('../organizacao/organizacao.routes');
 
-router.use('/clientes', clienteRoutes);
+router.use('/empresas', empresaRoutes);
 router.use('/organizacoes', organizacaoRoutes);
 
 

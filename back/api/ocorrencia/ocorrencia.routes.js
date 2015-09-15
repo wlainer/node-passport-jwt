@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var Cliente = require('./clientes.index');
+var Empresa = require('./empresa.index');
 
-router.get('/', Cliente.list);
+router.get('/', Empresa.list);
 
 module.exports = router;

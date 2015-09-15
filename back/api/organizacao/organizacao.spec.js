@@ -9,6 +9,8 @@ var Organizacao = require('./organizacao.model');
 
 describe('API Organizacao', function() {
 
+  var id = "";
+
   before(function(done) {
     // Clear users before testing
     Organizacao.remove().exec().then(function() {
@@ -23,7 +25,12 @@ describe('API Organizacao', function() {
       .send({
         nome: 'Organizacao Teste'
       })
-      .expect(201, done);
+      .expect(201)
+      .end(function(err, res) {
+        if (err) return done(err);
+        id = res.body.data._id;
+        done();
+      });
   });
 
   it('should respond with JSON array', function(done) {
@@ -33,27 +40,27 @@ describe('API Organizacao', function() {
       .expect('Content-Type', /json/)
       .end(function(err, res) {
         if (err) return done(err);
-        res.body.data.should.be.instanceof(Array);
+        expect(res.body.data).to.be.instanceof(Array);
         done();
       });
   });
 
   it('should be updated with a new name', function(done) {
     request(app)
-      .get('/api/v1/organizacoes')
-      .expect(200)
-      .expect('Content-Type', /json/)
+      .put('/api/v1/organizacoes/' + id)
+      .set('Accept', 'application/x-www-form-urlencoded')
+      .send({
+        nome: "Organizacao nome alterado",
+      })
       .end(function(err, res) {
-        request(app)
-          .put('/api/v1/organizacoes/' + res.body.data[0]._id)
-          .set('Accept', 'application/x-www-form-urlencoded')
-          .send({
-            nome: "Organizacao nome alterado",
-          })
-          .end(function(err, res) {
-            expect(res.body.data.nome).to.equal('Organizacao nome alterado');
-            done();
-          });
+        expect(res.body.data.nome).to.equal('Organizacao nome alterado');
+        done();
       });
+  });
+
+  it('should remove an object', function(done) {
+    request(app)
+      .delete('/api/v1/organizacoes/' + id)
+      .expect(200, done);
   });
 });
