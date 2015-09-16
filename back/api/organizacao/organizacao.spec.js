@@ -5,7 +5,7 @@ var app = require('../../app');
 var request = require('supertest');
 
 var Organizacao = require('./organizacao.model');
-var config = require('../../config/enviroment');
+var config = require('../../config/environment');
 var urlBase = (config.urlBase + '/organizacoes/');
 
 describe('> API ORGANIZACAO', function() {

@@ -5,7 +5,7 @@ var app = require('../../app');
 var request = require('supertest');
 
 var Empresa = require('./empresa.model');
-var config = require('../../config/enviroment');
+var config = require('../../config/environment');
 var urlBase = (config.urlBase + '/empresas/');
 
 describe('> API EMPRESA', function() {

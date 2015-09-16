@@ -4,9 +4,12 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express');
-var config = require('./config/enviroment');
+var config = require('./config/environment');
 
 var db = require('./config/db')(config);
+
+// Populate DB with sample data
+if(config.seedDB) { require('./config/seed'); }
 // var session = require('express-session');
 // var path = require('path');
 // var favicon = require('serve-favicon');
@@ -32,6 +35,7 @@ require('./config/express')(app);
 var api = {};
 api.routes = require('./api/routes');
 
+app.use('/auth', require('./auth'));
 app.use(config.urlBase, api.routes);
 
  // redirect all others to the index (HTML5 history)

@@ -5,7 +5,7 @@ var app = require('../../app');
 var request = require('supertest');
 
 var Ocorrencia = require('./ocorrencia.model');
-var config = require('../../config/enviroment');
+var config = require('../../config/environment');
 var urlBase = (config.urlBase + '/ocorrencias/');
 
 describe('> API OCORRENCIA', function() {
