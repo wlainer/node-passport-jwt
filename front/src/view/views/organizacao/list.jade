@@ -1,0 +1,25 @@
+.container
+  .row
+    .col-md-12
+      .panel.panel-default(data-ng-init="module = 'organizacao'")
+        .panel-heading.clearfix
+          strong {{ ctr.title }}
+          a(ui-sref="organizacaoCreate").btn.btn-default.btn-sm.pull-right Novo
+        .panel-body
+          table.table.table-condensed.table-hover
+            thead
+              tr
+                th(style='width:30%') Nome
+                th.text-center(style='width:10%') Alterar
+                th.text-center(style='width:10%') Excluir
+            tbody
+              tr(data-ng-repeat='item in ctr.list')
+                td
+                  a(href="/{{ module }}/{{ item._id }}")
+                    {{ item.nome }}
+                td.text-center
+                  button.btn.btn-warning.btn-xs(ui-sref="clientesForm.editClientes({id: item._id })")
+                    span.glyphicon.glyphicon-pencil(aria-hidden="true")
+                td.text-center
+                  button.btn.btn-danger.btn-xs(go-click='/{{ module }}/{{ item._id }}/edit')
+                    span.glyphicon.glyphicon-trash(aria-hidden="true")

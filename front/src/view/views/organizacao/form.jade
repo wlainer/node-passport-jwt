@@ -1,0 +1,37 @@
+.container
+  .row
+    .col-md-4
+      .panel.panel-default(data-ng-init="module = 'organizacao'")
+        .panel-heading.clearfix
+          strong {{ ctr.title }}
+          a(ui-sref="organizacaoCreate").btn.btn-default.btn-sm.pull-right Novo
+        .panel-body
+          table.table.table-condensed.table-hover
+            thead
+              tr
+                th(style='width:30%') Nome
+                th.text-center(style='width:10%') Excluir
+            tbody
+              tr(data-ng-repeat='item in ctr.list')
+                td
+                  a(href="/{{ module }}/{{ item._id }}")
+                    {{ item.nome }}
+                td.text-center
+                  button.btn.btn-danger.btn-xs(go-click='/{{ module }}/{{ item._id }}/edit')
+                    span.glyphicon.glyphicon-trash(aria-hidden="true")
+    .col-md-8
+      .panel.panel-default(data-ng-init="module = 'clientes'")
+        .panel-heading.clearfix
+          strong {{ ctr.title }}
+          //- button.btn.btn-default.btn-sm.pull-right(type="button", ng-disabled="clienteForm.$invalid") Salvar
+        .panel-body
+          form.form.form-vertical(name='organizacaoForm', role="form", ng-submit="ctr.createOrUpdate(organizacaoForm.$valid)", novalidate)
+            .form-group(ng-class="{ 'has-error' : organizacaoForm.nome.$invalid && !organizacaoForm.nome.$pristine }")
+              label(for='nome') * Nome
+              input#nome.form-control(ng-model='ctr.cliente.nome', type='text', name='nome', placeholder='Insira seu nome...', required)
+              p.help-block(ng-show="organizacaoForm.nome.$invalid && !organizacaoForm.nome.$pristine" ) Seu nome é obrigatório
+
+        .panel-footer.clearfix
+          .pull-right
+            button(type="submit", class="btn btn-danger") Cancelar
+            button(type="submit", class="btn btn-primary") Enviar

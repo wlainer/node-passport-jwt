@@ -1,0 +1,22 @@
+.container
+  .row
+    .col-md-12
+      .panel.panel-default(data-ng-init="module = 'clientes'")
+        .panel-heading.clearfix
+          strong {{ parent.title }}
+          //- button.btn.btn-default.btn-sm.pull-right(type="button", ng-disabled="clienteForm.$invalid") Salvar
+        .panel-body
+          ul.nav.nav-tabs(role='tablist')
+            li(role='presentation', ui-sref-active="active")
+              a(ui-sref=".editClientes({id: parent.id})", aria-controls='pessoais', role='tab', data-toggle='tab') Dados pessoais
+
+            li(role='presentation', ui-sref-active="active", ng-class="!!parent.id  ? '' : 'disabled disabledTab'")
+              a(ui-sref=".enderecos({clienteId: parent.id})", aria-controls='endereco', role='tab', data-toggle='tab') Endereços
+
+            li(role='presentation', ui-sref-active="active", ng-class="!!parent.id  ? '' : 'disabled disabledTab'")
+              a(aria-controls='contatos', role='tab', data-toggle='tab') Contatos
+
+            li(role='presentation', ui-sref-active="active", ng-class="!!parent.id  ? '' : 'disabled disabledTab'")
+              a(aria-controls='configuracoes', role='tab', data-toggle='tab') Configurações
+
+          .content(ui-view="")
