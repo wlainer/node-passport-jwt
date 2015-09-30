@@ -1,0 +1,11 @@
+module.exports =
+  jade: 'client/**/*.jade'
+  stylus: 'assets/styles/**/*.styl'
+  stylusMain: 'assets/styles/main.styl'
+  publicDir: '.tmp'
+  publicDirJS: 'client/app/'
+  publicDirCSS: '.tmp/css/'
+  images: 'assets/images/**/*'
+  distDir: 'dist'
+  revDir: 'rev'
+  deploy: 'dist/**/*'
